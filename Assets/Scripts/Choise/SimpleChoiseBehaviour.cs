@@ -3,25 +3,33 @@ using UnityEngine.UI;
 
 public class SimpleChoiseBehaviour : MonoBehaviour {
 
+    public SimpleControl playerControl;
+    public PickUpHistoryItem[] disableObjects;
 	public Text choiseText;
 	public string choiseQuestionString;
 	public SetLightOn[] lightOnScripts;
 	public SetLightOff[] lightOffScripts;
 	public MonoBehaviour positiveBehaviour;
-	public MonoBehaviour negativeBehaviour;
+	//public MonoBehaviour negativeBehaviour;
 
 	void Start () {
+        playerControl.enabled = false;
 		choiseText.text = choiseQuestionString;
 	}
 
 	public void PositiveAction() {
 		ActionCommonPart ();
 		positiveBehaviour.enabled = true;
+        playerControl.enabled = true;
+        foreach (PickUpHistoryItem obj in disableObjects)
+        {
+            obj.isTaken = true; 
+        }
 	}
 
 	public void NegativeAction() {
 		ActionCommonPart ();
-		negativeBehaviour.enabled = true;
+		//negativeBehaviour.enabled = true;
 	}
 
 	public void ActionCommonPart() {
