@@ -36,12 +36,14 @@ public class DiaryControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //
+
     }
 
     void Start()
     {
         textObject = textObject.GetComponent<Text>();
-        autoFillDiary();
+        refreshUIText();
     }
 
 
@@ -109,7 +111,7 @@ public class DiaryControl : MonoBehaviour
             {
                 addEntry("#maleDrugs");
             }
-            else if (this.gender == GENDER_MALE && this.secondLevelChoice == SECOND_CHOICE_DRUGS)
+            else if (this.gender == GENDER_MALE && this.secondLevelChoice == SECOND_CHOICE_PRIDE)
             {
                 addEntry("#malePride");
             }

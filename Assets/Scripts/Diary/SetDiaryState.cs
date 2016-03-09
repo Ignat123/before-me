@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SetDiaryState : MonoBehaviour {
 
@@ -8,8 +9,14 @@ public class SetDiaryState : MonoBehaviour {
 
     void Start()
     {
-        DiaryControl.control.gender = gender;
-        DiaryControl.control.secondLevelChoice = secondLevelChoice;
+        if (!System.String.IsNullOrEmpty(gender))
+        {
+            DiaryControl.control.gender = gender;
+        }
+        if (!System.String.IsNullOrEmpty(secondLevelChoice))
+        {   
+            DiaryControl.control.secondLevelChoice = secondLevelChoice;
+        }
         DiaryControl.control.autoFillDiary();
     }
 }

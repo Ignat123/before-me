@@ -29,6 +29,7 @@ public class SimpleChoiseBehaviour : MonoBehaviour {
 
 	public void NegativeAction() {
 		ActionCommonPart ();
+        playerControl.enabled = true;
 		//negativeBehaviour.enabled = true;
 	}
 
