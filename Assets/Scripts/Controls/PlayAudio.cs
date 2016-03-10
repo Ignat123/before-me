@@ -21,13 +21,14 @@ public class PlayAudio : MonoBehaviour {
 
     void Start()
     {
-        thisRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        thisRenderer.sprite = elementSprites[0];
+        //thisRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        //thisRenderer.sprite = elementSprites[0];
     }
 
     void OnMouseOver()
     {
-        thisRenderer.sprite = elementSprites[1];
+		Debug.Log ("OnMouseOver");
+        //thisRenderer.sprite = elementSprites[1];
         if (!source.isPlaying && isOnArea)
         {
             if (Input.GetMouseButtonDown(0))
@@ -64,7 +65,8 @@ public class PlayAudio : MonoBehaviour {
 
     void OnMouseExit()
     {
-        thisRenderer.sprite = elementSprites[0];
+		Debug.Log ("OnMouseExit");
+        //thisRenderer.sprite = elementSprites[0];
     }
 
     void OnTriggerEnter2D(Collider2D collider)
