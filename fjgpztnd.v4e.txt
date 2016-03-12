@@ -1,0 +1,17 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Assets/Scenes/Level2.unity
+#	modified:   Assets/Scenes/Level3.unity
+#	modified:   Assets/Scripts/Choise/SimpleChoiseBehaviour.cs
+#	modified:   Assets/Scripts/Diary/DiaryControl.cs
+#	modified:   Assets/Scripts/Diary/SetDiaryState.cs
+#	new file:   Assets/Scripts/LevelsBehavour/DisableItems.cs
+#	new file:   Assets/Scripts/LevelsBehavour/DisableItems.cs.meta
+#	modified:   Assets/Text/diary.xml
+#
+

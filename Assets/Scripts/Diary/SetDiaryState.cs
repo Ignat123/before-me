@@ -6,6 +6,7 @@ public class SetDiaryState : MonoBehaviour {
 
     public string gender;
     public string secondLevelChoice;
+    public string thirdLevelChoice;
 
     void Start()
     {
@@ -16,6 +17,10 @@ public class SetDiaryState : MonoBehaviour {
         if (!System.String.IsNullOrEmpty(secondLevelChoice))
         {   
             DiaryControl.control.secondLevelChoice = secondLevelChoice;
+        }
+        if (!System.String.IsNullOrEmpty(thirdLevelChoice))
+        {   
+            DiaryControl.control.thirdLevelChoice = thirdLevelChoice;
         }
         DiaryControl.control.autoFillDiary();
     }

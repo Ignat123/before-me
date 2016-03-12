@@ -10,6 +10,7 @@ public class SimpleChoiseBehaviour : MonoBehaviour {
 	public SetLightOn[] lightOnScripts;
 	public SetLightOff[] lightOffScripts;
 	public MonoBehaviour positiveBehaviour;
+    public GameObject canvas;
 	//public MonoBehaviour negativeBehaviour;
 
 	void Start () {
@@ -34,9 +35,10 @@ public class SimpleChoiseBehaviour : MonoBehaviour {
 	}
 
 	public void ActionCommonPart() {
-		foreach (SetLightOn lightOnScript in lightOnScripts)
-			lightOnScript.enabled = false;
-		foreach (SetLightOff lightOffScript in lightOffScripts)
-			lightOffScript.enabled = true;
+		//foreach (SetLightOn lightOnScript in lightOnScripts)
+			//lightOnScript.enabled = false;
+		//foreach (SetLightOff lightOffScript in lightOffScripts)
+		//	lightOffScript.enabled = true;
+        canvas.SetActive(false);
 	}
 }

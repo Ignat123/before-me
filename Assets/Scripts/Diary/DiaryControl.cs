@@ -17,12 +17,17 @@ public class DiaryControl : MonoBehaviour
     //Player Choices History
     public string gender;
     public string secondLevelChoice;
+    public string thirdLevelChoice;
 
     public const string GENDER_MALE = "male";
     public const string GENDER_FEMALE = "female";
     public const string SECOND_CHOICE_CRISIS = "crisis";
     public const string SECOND_CHOICE_DRUGS = "drugs";
     public const string SECOND_CHOICE_PRIDE = "pride";
+    public const string THIRD_CHOICE_FEAR = "fear";
+    public const string THIRD_CHOICE_ANGER = "anger";
+    public const string THIRD_CHOICE_LONELINESS = "loneliness";
+
 
     void Awake()
     {
@@ -31,6 +36,7 @@ public class DiaryControl : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             control = this;
             entries = new List<string>();
+            autoFillDiary();
         }
         else if (control != this)
         {
@@ -39,7 +45,7 @@ public class DiaryControl : MonoBehaviour
         //
 
     }
-
+        
     void Start()
     {
         textObject = textObject.GetComponent<Text>();
@@ -55,6 +61,7 @@ public class DiaryControl : MonoBehaviour
         {
             setFirstLevelChoices();
             setSecondLevelChoices();
+            setThirdLevelChoices();
         }
         catch (Exception e)
         {
@@ -101,8 +108,13 @@ public class DiaryControl : MonoBehaviour
     //todo: think up a better way to chain complex diary entries, this is looks too badly
     protected void setSecondLevelChoices()
     {
-        if (!System.String.IsNullOrEmpty(this.gender) && !System.String.IsNullOrEmpty(this.secondLevelChoice))
+        if (!System.String.IsNullOrEmpty(this.secondLevelChoice))
         {
+            if (System.String.IsNullOrEmpty(this.gender))
+            {
+                this.gender = GENDER_MALE;
+            }
+
             if (this.gender == GENDER_MALE && this.secondLevelChoice == SECOND_CHOICE_CRISIS)
             {
                 addEntry("#maleCrisis");
@@ -130,6 +142,41 @@ public class DiaryControl : MonoBehaviour
             else
             {
                 throw new Exception("Gender or secondLevelChoice variable in DiaryControl set inproperly.");
+            }
+        }
+    }
+
+    protected void setThirdLevelChoices()
+    {
+        if (!System.String.IsNullOrEmpty(this.thirdLevelChoice))
+        {
+            if (this.gender == GENDER_MALE && this.thirdLevelChoice == THIRD_CHOICE_FEAR)
+            {
+                addEntry("#maleFear");
+            }
+            else if (this.gender == GENDER_MALE && this.thirdLevelChoice == THIRD_CHOICE_ANGER)
+            {
+                addEntry("#maleAnger");
+            }
+            else if (this.gender == GENDER_MALE && this.thirdLevelChoice == THIRD_CHOICE_LONELINESS)
+            {
+                addEntry("#maleLoneliness");
+            }
+            else if (this.gender == GENDER_FEMALE && this.thirdLevelChoice == THIRD_CHOICE_FEAR)
+            {
+                addEntry("#femaleFear");
+            }
+            else if (this.gender == GENDER_FEMALE && this.thirdLevelChoice == THIRD_CHOICE_ANGER)
+            {
+                addEntry("#femaleAnger");
+            }
+            else if (this.gender == GENDER_FEMALE && this.thirdLevelChoice == THIRD_CHOICE_LONELINESS)
+            {
+                addEntry("#femaleLoneliness");
+            }
+            else
+            {
+                throw new Exception("Gender or thirdLevelChoice variable in DiaryControl set inproperly.");
             }
         }
     }
