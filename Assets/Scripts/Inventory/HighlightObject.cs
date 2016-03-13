@@ -6,11 +6,11 @@ public class HighlightObject : MonoBehaviour {
 	public Sprite normal;
 	public Sprite highlited;
 
-	private SpriteRenderer _renderer;
+	private SpriteRenderer renderer;
 
 	// Use this for initialization
 	void Start () {
-		this._renderer = this.gameObject.GetComponent<SpriteRenderer>();
+		renderer = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -19,11 +19,11 @@ public class HighlightObject : MonoBehaviour {
 	}
 
 	void OnMouseOver() {
-		this._renderer.sprite = this.highlited;
+        renderer.sprite = this.highlited;
 	}
 
 	void OnMouseExit() 
 	{
-		this._renderer.sprite = this.normal;
+		renderer.sprite = this.normal;
 	}
 }

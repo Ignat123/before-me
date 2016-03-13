@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayAudio : MonoBehaviour {
 
-    public AudioClip audio;
+    public AudioClip audioClip;
     public AudioSource source;
     public SimpleControl playerControl;
     public Animator playerAnimator;
@@ -27,7 +27,7 @@ public class PlayAudio : MonoBehaviour {
 
     void OnMouseOver()
     {
-		Debug.Log ("OnMouseOver");
+		//Debug.Log ("OnMouseOver");
         //thisRenderer.sprite = elementSprites[1];
         if (!source.isPlaying && isOnArea)
         {
@@ -35,7 +35,7 @@ public class PlayAudio : MonoBehaviour {
             {
                 playerAnimator.Play("Take", -1, 0);
                 playerRigidbody.velocity = new Vector2(0, 0);
-                source.PlayOneShot(audio);
+                source.PlayOneShot(audioClip);
                 if (this.gameObject.name == "Box")
                 {
                     this.gameObject.transform.localEulerAngles = new Vector3(0, 0, 50);
@@ -65,7 +65,7 @@ public class PlayAudio : MonoBehaviour {
 
     void OnMouseExit()
     {
-		Debug.Log ("OnMouseExit");
+		//Debug.Log ("OnMouseExit");
         //thisRenderer.sprite = elementSprites[0];
     }
 
