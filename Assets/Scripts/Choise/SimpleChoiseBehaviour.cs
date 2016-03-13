@@ -35,10 +35,18 @@ public class SimpleChoiseBehaviour : MonoBehaviour {
 	}
 
 	public void ActionCommonPart() {
-		//foreach (SetLightOn lightOnScript in lightOnScripts)
-			//lightOnScript.enabled = false;
-		//foreach (SetLightOff lightOffScript in lightOffScripts)
-		//	lightOffScript.enabled = true;
-        canvas.SetActive(false);
+		foreach (SetLightOn lightOnScript in lightOnScripts)
+			lightOnScript.enabled = false;
+		foreach (SetLightOff lightOffScript in lightOffScripts)
+			lightOffScript.enabled = true;
+        //canvas.SetActive(false);
+	}
+
+	public void CloseOff() {
+		foreach (SetLightOff lightOffScript in lightOffScripts)
+			lightOffScript.enabled = false;
+		foreach (SetLightOn lightOnScript in lightOnScripts)
+			lightOnScript.enabled = true;
+		canvas.SetActive (false);
 	}
 }
