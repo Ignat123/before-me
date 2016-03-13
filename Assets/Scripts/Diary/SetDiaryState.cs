@@ -8,8 +8,18 @@ public class SetDiaryState : MonoBehaviour {
     public string secondLevelChoice;
     public string thirdLevelChoice;
 
+    protected bool stateChanged;
+
     void Start()
     {
+        stateChanged = false;
+        if (DiaryControl.control.gender != gender ||
+            DiaryControl.control.secondLevelChoice != secondLevelChoice ||
+            DiaryControl.control.thirdLevelChoice != thirdLevelChoice)
+        {
+            stateChanged = true;
+        }
+
         if (!System.String.IsNullOrEmpty(gender))
         {
             DiaryControl.control.gender = gender;
@@ -23,5 +33,10 @@ public class SetDiaryState : MonoBehaviour {
             DiaryControl.control.thirdLevelChoice = thirdLevelChoice;
         }
         DiaryControl.control.autoFillDiary();
+
+        if (stateChanged)
+        {
+            GameObject.Find("Diary").GetComponent<Animator>().SetBool("NewEntry", true);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class DiaryActivator : MonoBehaviour {
 			GameObject.Find ("CharacterCentralPoint").GetComponent<Rigidbody2D> ().velocity = new Vector2 ();
 			control.enabled = false;
 			diaryCanvas.enabled = true;
+            GameObject.Find("Diary").GetComponent<Animator>().SetBool("NewEntry", false);
 		} else {
 			control.enabled = true;
 			diaryCanvas.enabled = false;
