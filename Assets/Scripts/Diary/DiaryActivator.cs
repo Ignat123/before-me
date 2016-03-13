@@ -15,6 +15,8 @@ public class DiaryActivator : MonoBehaviour {
 	}
 
 	public void Turn () {
+		if (!isEnabled && !control.enabled)
+			return;
 		isEnabled = !isEnabled;
 		if (isEnabled) {
 			GameObject.Find ("CharacterCentralPoint").GetComponent<Rigidbody2D> ().velocity = new Vector2 ();
