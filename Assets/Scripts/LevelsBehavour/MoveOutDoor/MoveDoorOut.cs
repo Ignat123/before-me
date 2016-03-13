@@ -5,7 +5,7 @@ public class MoveDoorOut : MonoBehaviour {
 
 	public Vector2 positionToGo;
 	public Vector2 speed = new Vector2();
-	public SetLightOff lightOffPlayer;
+	//public SetLightOff lightOffPlayer;
 	private float lastFrameTime = 0;
 	private SimpleControl simpleControl;
 	private float xSpeed;
@@ -15,7 +15,7 @@ public class MoveDoorOut : MonoBehaviour {
 	void Start() {
 		lastFrameTime = Time.time;
 		playerPoint = GameObject.Find ("CharacterCentralPoint");
-		GameObject.Find ("Player").GetComponent<Animator> ().Play ("Fly");
+		GameObject.Find ("Player").GetComponent<Animator> ().Play ("Flying");
 		simpleControl = GameObject.Find ("CharacterCentralPoint").GetComponent<SimpleControl> ();
 		if (simpleControl.isFacedRight)
 			simpleControl.Flip ();
@@ -32,7 +32,7 @@ public class MoveDoorOut : MonoBehaviour {
 		if (playerPoint.transform.position.y < positionToGo.y)
 			ySpeed = speed.y;
 		if (xSpeed == 0 && ySpeed == 0) {
-			lightOffPlayer.enabled = true;
+			//lightOffPlayer.enabled = true;
 			this.enabled = false;
 			return;
 		}

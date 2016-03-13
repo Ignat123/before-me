@@ -18,6 +18,7 @@ public class PlayAudio : MonoBehaviour {
     private PlayAudio bedToyScript;
     private PlayAudio bearScript;
     private PlayAudio horseScript;
+	private bool isEnabled = false;
 
     void Start()
     {
@@ -36,12 +37,14 @@ public class PlayAudio : MonoBehaviour {
                 playerAnimator.Play("Take", -1, 0);
                 playerRigidbody.velocity = new Vector2(0, 0);
                 source.PlayOneShot(audioClip);
+				if (!isEnabled) {
+					playerControl.enabled = false;
+					isEnabled = true;
+				}
                 if (this.gameObject.name == "Box")
                 {
                     this.gameObject.transform.localEulerAngles = new Vector3(0, 0, 50);
                 }
-                foreach (MonoBehaviour script in startScripts)
-                    script.enabled = true;
 
                 bedToyScript = GameObject.Find("BedToy").GetComponent<PlayAudio>();
                 bearScript = GameObject.Find("Bear").GetComponent<PlayAudio>();
@@ -51,7 +54,9 @@ public class PlayAudio : MonoBehaviour {
                 {
                     successScript.enabled = true;
                 } else
-                {
+				{
+					foreach (MonoBehaviour script in startScripts)
+						script.enabled = true;
                     GameObject.Find("SpeachCanvas").GetComponent<Canvas>().enabled = false;
                 }
             }
