@@ -37,6 +37,8 @@ public class PickUpHistoryItem : MonoBehaviour {
 
     void TakeItOnPosition()
     {
+		if (!GameObject.Find ("CharacterCentralPoint").GetComponent<SimpleControl> ().enabled)
+			return;
         if (Input.GetMouseButtonDown(0) || isGoToPosition)
         {
             if (isThereTutorial)
