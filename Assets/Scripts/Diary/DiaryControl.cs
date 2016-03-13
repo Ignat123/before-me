@@ -87,6 +87,11 @@ public class DiaryControl : MonoBehaviour
 
     protected void setFirstLevelChoices()
     {
+        if (!System.String.IsNullOrEmpty(this.secondLevelChoice) || !System.String.IsNullOrEmpty(this.thirdLevelChoice))
+        {
+            this.gender = GENDER_MALE;
+        }
+
         if (!System.String.IsNullOrEmpty(this.gender))
         {
             if (this.gender != GENDER_MALE && this.gender != GENDER_FEMALE)
@@ -108,12 +113,13 @@ public class DiaryControl : MonoBehaviour
     //todo: think up a better way to chain complex diary entries, this is looks too badly
     protected void setSecondLevelChoices()
     {
+        if (!System.String.IsNullOrEmpty(this.thirdLevelChoice))
+        {
+            this.gender = SECOND_CHOICE_CRISIS;
+        }
+
         if (!System.String.IsNullOrEmpty(this.secondLevelChoice))
         {
-            if (System.String.IsNullOrEmpty(this.gender))
-            {
-                this.gender = GENDER_MALE;
-            }
 
             if (this.gender == GENDER_MALE && this.secondLevelChoice == SECOND_CHOICE_CRISIS)
             {
