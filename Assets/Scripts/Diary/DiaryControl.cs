@@ -45,10 +45,9 @@ public class DiaryControl : MonoBehaviour
         //
 
     }
-        
-    void Start()
-    {
-        textObject = textObject.GetComponent<Text>();
+
+    void OnLevelWasLoaded()
+    {        
         refreshUIText();
     }
 
@@ -77,11 +76,18 @@ public class DiaryControl : MonoBehaviour
 
     protected void refreshUIText()
     {
-        textObject.text = "";
-        foreach (string textEntry in entries)
+        if (textObject == null)
         {
-            textObject.text += textEntry;
-            textObject.text += "\n\n";
+            textObject = GameObject.Find("HistoryText").GetComponent<Text>();
+        }
+        if (textObject != null)
+        {
+            textObject.text = "";
+            foreach (string textEntry in entries)
+            {
+                textObject.text += textEntry;
+                textObject.text += "\n\n";
+            }
         }
     }
 
